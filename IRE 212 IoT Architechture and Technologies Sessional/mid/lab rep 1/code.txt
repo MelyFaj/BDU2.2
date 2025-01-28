@@ -1,0 +1,29 @@
+void setup()
+{
+  //2,6,10-red
+  //3,4,7,8,11,12-yellow
+  //5,9,13-green
+  for(int i=2; i<14; i++){
+    pinMode(i, OUTPUT);
+  }  
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(2, HIGH);
+  delay(6000); 
+  digitalWrite(2, LOW);//red
+  
+  digitalWrite(9, HIGH);
+  delay(4000); 
+  digitalWrite(9, LOW);//green
+  
+  digitalWrite(11, HIGH);
+  digitalWrite(12, HIGH);
+  delay(2000); 
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);//yellow
+  
+
+}
