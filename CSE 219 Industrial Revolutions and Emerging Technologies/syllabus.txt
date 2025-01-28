@@ -1,0 +1,21 @@
+বিগ ডেটার সাথে ডেটা ওয়্যার হাউজের সম্পর্ক
+
+
+একটা নতুন ক্রিপ্টোকারেন্সি কীভাবে তৈরি করতে হয়
+
+quantam:
+intro
+Conventional computer vs quantam computer
+working principle
+scenario (cc vs qc)
+challenges
+
+
+
+3D printing:
+what 
+how it works
+বেনেফিতস
+
+
+ব্লক চেইন থেকে কোয়েশ্চেন বেশী আসবে
