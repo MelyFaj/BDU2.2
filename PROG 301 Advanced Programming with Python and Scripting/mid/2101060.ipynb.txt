@@ -1,0 +1,396 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "JZzd5kTGtlIr",
+        "outputId": "24f798aa-0a6b-4a72-f753-1a11b6ccb7da"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hi There! I am doing Python\n"
+          ]
+        }
+      ],
+      "source": [
+        "print('Hi There! I am doing Python')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(2)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Rv6h5sR1uR6O",
+        "outputId": "c878b103-fb34-4bb6-9504-56787daede53"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(2+3*5)\n",
+        "print(2*3+5)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "gWD59PmyuU93",
+        "outputId": "c4b596ad-153a-4d78-a492-3873b7bdff98"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "17\n",
+            "11\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=input('enter a value')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-NgQJZXPulyX",
+        "outputId": "93126b6c-31bd-4e0a-824e-da6f6d95e7be"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "enter a value22\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def nPrintln(message, n):\n",
+        "    for i in range(0, n):\n",
+        "        print(message)"
+      ],
+      "metadata": {
+        "id": "7loZLlZA0Z_s"
+      },
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nPrintln(n = 4, message = “Computer Science”)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 106
+        },
+        "id": "YGZ7DFQ30cEs",
+        "outputId": "6f6773cf-8ccb-4a78-bb08-b221652e5a11"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "invalid character '“' (U+201C) (<ipython-input-2-d52d9b0eb37c>, line 1)",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-2-d52d9b0eb37c>\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    nPrintln(n = 4, message = “Computer Science”)\u001b[0m\n\u001b[0m                              ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid character '“' (U+201C)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nPrintln(4, “Computer Science”)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 106
+        },
+        "id": "n_DI2mwR0l8F",
+        "outputId": "e488c59c-e423-4c3d-ee48-35197764f128"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "invalid character '“' (U+201C) (<ipython-input-3-b6aa1a43b602>, line 1)",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-3-b6aa1a43b602>\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    nPrintln(4, “Computer Science”)\u001b[0m\n\u001b[0m                ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid character '“' (U+201C)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "V9Uur0es0aht"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "qiqQo_QOwyiB"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "list1 = [\"green\", \"red\", \"blue\"]\n",
+        "list3 = [\"green\", \"red\", \"blue\"]\n",
+        "list2 = [\"red\", \"blue\", \"green\"]\n",
+        "list3== list1"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6lv7T_u4usZX",
+        "outputId": "22869f97-d581-45d0-8f17-765f7554bbf2"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "ernDcNLwxy5C"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[2,3,4]\n",
+        "b=[3,4,5]\n",
+        "a==b"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZOZWju5Jxw4p",
+        "outputId": "42aa10ae-1f72-4161-9841-af41a3803749"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "False"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=int(input('enter a value'))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "U7sRFjHZOctx",
+        "outputId": "eda4d267-2a30-454e-b2cd-9f299c2cc660"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "enter a value25\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "import numpy as np\n",
+        "g=np.random.rand(0,a//2)"
+      ],
+      "metadata": {
+        "id": "0jYUJFNmOnbp"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "g"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mY3zZ9BPOqpa",
+        "outputId": "d4c05729-5047-49cc-fbea-baab7f9ac4ec"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "<ipython-input-14-c50af596c4a1>:1: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.\n",
+            "  while g*g-a>=0.0001:\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([], shape=(0, 12), dtype=float64)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "x_5,y=3*9,2"
+      ],
+      "metadata": {
+        "id": "8lNFHdniPgdq"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#print(10101010**1000)\n",
+        "import sys\n",
+        "print(sys.get_int_max_str_digits())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "p_iRSHPNsIFY",
+        "outputId": "089364c1-e66a-4273-f812-8f771471113e"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "4300\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Prompt the user for input\n",
+        "purchaseAmount = eval(input(\"Enter purchase amount: \"))\n",
+        "\n",
+        "# Compute sales tax\n",
+        "tax = purchaseAmount * 0.06\n",
+        "\n",
+        "# Display tax amount with two digits after decimal point\n",
+        "print(\"Sales tax is\", int(tax * 100) / 100.0)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NB4T9NS-wxTw",
+        "outputId": "ff42455e-b2f4-4313-b949-3ec27dd42b73"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter purchase amount: 233\n",
+            "Sales tax is 13.97\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
