@@ -1,0 +1,29 @@
+cd blog_website
+
+Install virtual environment:
+pip install virtualenv
+
+then give a name to your virtual environment
+virtualenv venv
+
+activate you’re virtual environment
+venv\Scripts\activate
+
+then install Django & pillow for our project
+pip install Django
+pip install pillow
+
+pip install -r requirements.txt
+
+for give user rich text editing;
+pip install django-ckeditor-5
+
+for sentiment;
+pip install transformers torch
+
+for create & change in DB;
+python manage.py makemigrations
+python manage.py migrate
+
+
+python manage.py runserver
