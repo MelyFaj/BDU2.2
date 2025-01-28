@@ -1,0 +1,351 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Z0G2_3Cq5L3Q",
+        "outputId": "dfe7b513-b462-4b56-8e83-88f4c975a201"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The area for the circle of radius 20 is 1256.636\n"
+          ]
+        }
+      ],
+      "source": [
+        "#compute tax\n",
+        "# Assign a radius\n",
+        "radius = 20 # radius is now 20\n",
+        "\n",
+        "# Compute area\n",
+        "area = radius * radius * 3.14159\n",
+        "\n",
+        "# Display results\n",
+        "print(\"The area for the circle of radius\", radius, \"is\", area)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#ComputeAreaWithConsoleInput\n",
+        "# Prompt the user to enter a radius\n",
+        "radius = eval(input(\"Enter a number for radius: \"))\n",
+        "\n",
+        "# Compute area\n",
+        "area = radius * radius * 3.14159\n",
+        "\n",
+        "# Display results\n",
+        "print(\"The area for the circle of radius\", radius, \"is\", area)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "v9036CoS5RnH",
+        "outputId": "30b262d9-4066-43c1-eec5-eb20f603c6b7"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number for radius: 20\n",
+            "The area for the circle of radius 20 is 1256.636\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#ComputeAverage\n",
+        "\n",
+        "# Prompt the user to enter three numbers\n",
+        "number1 = eval(input(\"Enter the first number: \"))\n",
+        "number2 = eval(input(\"Enter the second number: \"))\n",
+        "number3 = eval(input(\"Enter the third number: \"))\n",
+        "\n",
+        "# Compute average\n",
+        "average = (number1 + number2 + number3) / 3\n",
+        "\n",
+        "# Display result\n",
+        "print(\"The average of\", number1, number2, number3,\n",
+        "    \"is\", average)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EDzfs8yV5lsl",
+        "outputId": "d210c4df-d187-405a-e366-6bfffb44f9c4"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter the first number: 10\n",
+            "Enter the second number: 20\n",
+            "Enter the third number: 30\n",
+            "The average of 10 20 30 is 20.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#ComputeAverageWithSimultaneousAssignment\n",
+        "# Prompt the user to enter three numbers\n",
+        "number1, number2, number3 = eval(input(\n",
+        "  \"Enter three numbers separated by commas: \"))\n",
+        "\n",
+        "# Compute average\n",
+        "average = (number1 + number2 + number3) / 3\n",
+        "\n",
+        "# Display result\n",
+        "print(\"The average of\", number1, number2, number3,\n",
+        "    \"is\", average)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DwVKr3Zg57O1",
+        "outputId": "2def6737-eaf7-4f2c-f1a7-077510171632"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter three numbers separated by commas: 3,4,6\n",
+            "The average of 3 4 6 is 4.333333333333333\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Display Time\n",
+        "\n",
+        "# Prompt the user for input\n",
+        "seconds = eval(input(\"Enter an integer for seconds: \"))\n",
+        "\n",
+        "# Get minutes and remaining seconds\n",
+        "minutes = seconds // 60     # Find minutes in seconds\n",
+        "remainingSeconds = seconds % 60   # Seconds remaining\n",
+        "print(seconds, \"seconds is\", minutes,\n",
+        "  \"minutes and\", remainingSeconds, \"seconds\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZsEvZBtl6SxN",
+        "outputId": "1c279ca6-59dc-4e33-f5be-e5b8bc852d87"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter an integer for seconds: 2000\n",
+            "2000 seconds is 33 minutes and 20 seconds\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Sales tax\n",
+        "# Prompt the user for input\n",
+        "purchaseAmount = eval(input(\"Enter purchase amount: \"))\n",
+        "\n",
+        "# Compute sales tax\n",
+        "tax = purchaseAmount * 0.06\n",
+        "\n",
+        "# Display tax amount with two digits after decimal point\n",
+        "print(\"Sales tax is\", int(tax * 100) / 100.0)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fU2Q_s817BkG",
+        "outputId": "1d70a437-e019-4927-c5e5-8d446e34398a"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter purchase amount: 3025\n",
+            "Sales tax is 181.5\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#ShowCurrentTime\n",
+        "\n",
+        "import time\n",
+        "\n",
+        "currentTime = time.time() # Get current time\n",
+        "\n",
+        "# Obtain the total seconds since midnight, Jan 1, 1970\n",
+        "totalSeconds = int(currentTime)\n",
+        "\n",
+        "# Get the current second\n",
+        "currentSecond = totalSeconds % 60\n",
+        "\n",
+        "# Obtain the total minutes\n",
+        "totalMinutes = totalSeconds // 60\n",
+        "\n",
+        "# Compute the current minute in the hour\n",
+        "currentMinute = totalMinutes % 60\n",
+        "\n",
+        "# Obtain the total hours\n",
+        "totalHours = totalMinutes // 60\n",
+        "\n",
+        "# Compute the current hour\n",
+        "currentHour = totalHours % 24\n",
+        "\n",
+        "# Display results\n",
+        "print(\"Current time is \" + str(currentHour) + \":\"\n",
+        "    + str(currentMinute) + \":\" + str(currentSecond) + \" GMT\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KHl_b-2W7RmP",
+        "outputId": "8c18748d-c059-4605-8baf-a88c041921da"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Current time is 3:35:42 GMT\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#monthly Payment\n",
+        "\n",
+        "# Enter yearly interest rate\n",
+        "annualInterestRate = eval(input(\n",
+        "  \"Enter annual interest rate, e.g., 8.25: \"))\n",
+        "monthlyInterestRate = annualInterestRate / 1200\n",
+        "\n",
+        "# Enter number of years\n",
+        "numberOfYears = eval(input(\n",
+        "  \"Enter number of years as an integer, e.g., 5: \"))\n",
+        "\n",
+        "# Enter loan amount\n",
+        "loanAmount = eval(input(\"Enter loan amount, e.g., 120000.95: \"))\n",
+        "\n",
+        "# Calculate payment\n",
+        "monthlyPayment = loanAmount * monthlyInterestRate / (1\n",
+        "  - 1 / (1 + monthlyInterestRate) ** (numberOfYears * 12))\n",
+        "totalPayment = monthlyPayment * numberOfYears * 12\n",
+        "\n",
+        "# Display results\n",
+        "print(\"The monthly payment is\", int(monthlyPayment * 100) / 100)\n",
+        "print(\"The total payment is\", int(totalPayment * 100) /100)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7nNZFE5f7s29",
+        "outputId": "0af1dcd9-b2e9-4e86-a166-35f097eeb35d"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter annual interest rate, e.g., 8.25: 12.563\n",
+            "Enter number of years as an integer, e.g., 5: 30\n",
+            "Enter loan amount, e.g., 120000.95: 60000000025\n",
+            "The monthly payment is 643289184.48\n",
+            "The total payment is 231584106413.9\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#compute Distance\n",
+        "\n",
+        "# Enter the first point with two double values\n",
+        "x1, y1 = eval(input(\"Enter x1 and y1: \"))\n",
+        "\n",
+        "# Enter the second point with two double values\n",
+        "x2, y2 = eval(input(\"Enter x2 and y2: \"))\n",
+        "\n",
+        "# Compute the distance\n",
+        "distance = ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)) ** 0.5\n",
+        "\n",
+        "print(\"The distance between the two points is\", distance)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "jwys20ts8hx9",
+        "outputId": "24773e46-3fd1-4cb5-95cb-eff445393d1e"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter x1 and y1: 3,2\n",
+            "Enter x2 and y2: 2,3\n",
+            "The distance between the two points is 1.4142135623730951\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
