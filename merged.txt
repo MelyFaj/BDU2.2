@@ -1,0 +1,342 @@
+/////////////////////////////////////////////////////////##AIR QUALITY
+#include <SPI.h> 
+#include <Wire.h> 
+#include <Adafruit_GFX.h> 
+#include <Adafruit_SSD1306.h> 
+#include <dht.h> 
+#define SCREEN_WIDTH 128 
+#define SCREEN_HEIGHT 64 
+#define OLED_RESET 4 
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, 
+OLED_RESET); 
+#define sensor A0 
+#define DHT11PIN 2 
+int gasLevel = 0; 
+String quality = ""; 
+dht DHT;
+void sendSensor() { 
+ // Function to read temperature and humidity from the DHT sensor 
+int readData = DHT.read11(DHT11PIN); 
+      float h = DHT.humidity; 
+      float t = DHT.temperature; 
+ 
+      if (isnan(h) || isnan(t)) { 
+      Serial.println("Failed  to read from DHT sensor!"); 
+        Return; 
+  } 
+      display.setTextColor(WHITE); 
+      display.setTextSize(1); 
+      display.setFont(); 
+      display.setCursor(0, 43); 
+      display.println("Temp  :"); 
+     display.setCursor(80, 43); 
+      display.println(t); 
+      display.setCursor(114, 43); 
+      display.println("C"); 
+      display.setCursor(0,  56); 
+      display.println("RH    :"); 
+      display.setCursor(80, 56); 
+      display.println(h); 
+      display.setCursor(114, 56); 
+      display.println("%"); 
+} 
+void air_sensor() { 
+gasLevel = analogRead(sensor); 
+  if(gasLevel<151){ 
+        quality = "  GOOD!"; 
+      } 
+      else if (gasLevel >151 && gasLevel<200){ 
+        quality =  "  Poor!"; 
+  } 
+      else if (gasLevel >200 && gasLevel<300){ 
+        quality  = "Very bad!"; 
+  } 
+        else if (gasLevel >300 && gasLevel<500){ 
+        quality  = "Toxic!"; 
+  } 
+        else{ 
+        quality = " Toxic";    
+} 
+  display.setTextColor(WHITE); 
+  display.setTextSize(1);   
+  display.setCursor(1,5); 
+  display.setFont(); 
+  display.println("Air Quality:"); 
+  display.setTextSize(1); 
+  display.setCursor(5,23); 
+  display.println(gasLevel); 
+   
+  display.setCursor(20,23); 
+  display.println(quality);   
+} 
+This function is defined to read gas levels from the analog pin connected to the gas 
+sensor and determine the air quality based on predefined thresholds. It also displays 
+the gas level and quality on the OLED screen. 
+ 
+void setup() { 
+ Serial.begin(9600); 
+  pinMode(sensor,INPUT); 
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3c)) { // Address  0x3D for 12
+ 8x64 
+    Serial.println(F("SSD1306 allocation failed")); 
+} 
+  display.clearDisplay(); 
+  display.setTextColor(WHITE); 
+   
+  display.setTextSize(2); 
+  display.setCursor(50, 0); 
+  display.println("Air"); 
+  display.setTextSize(1); 
+  display.setCursor(23, 20); 
+  display.println("Quality monitor"); 
+  display.display(); 
+  delay(1200); 
+  display.clearDisplay(); 
+   
+  display.setTextSize(1.5); 
+  display.setCursor(20, 20); 
+  display.println("BY Circuit"); 
+  display.setCursor(20, 40); 
+  display.println("Digest"); 
+  display.display(); 
+  delay(1000); 
+  display.clearDisplay(); 
+}
+void loop() { 
+display.clearDisplay(); 
+air_sensor(); 
+sendSensor(); 
+display.display();   
+}
+
+/////////////////////////////////////////////////////##car parking///
+ Code:
+ #include <Servo.h>
+ // Initialize Servo motor
+ Servo entryServo;
+ // Define pins for IR sensors
+ int irEntrySensor = 2; // IR sensor to detect car at entry
+ int irSlotSensor = 4; // IR sensor for the single parking slot
+ // Define pins for indicator LEDs
+ int redLED = 6;
+ // Red LED pin for gate closed
+ int greenLED = 7;
+ // Green LED pin for gate open
+ bool isSlotOccupied = false; // Track parking slot status
+ // Function prototypes
+ void openGate();
+ void closeGate();
+ void setup() {
+ Serial.begin(9600);
+ // Initialize LEDs and IR sensors
+ pinMode(redLED, OUTPUT);
+ pinMode(greenLED, OUTPUT);
+ pinMode(irEntrySensor, INPUT);
+ pinMode(irSlotSensor, INPUT);
+ // Attach the servo
+ entryServo.attach(11);
+ entryServo.write(180); // Initial position: Gate closed
+ // Display initial status on Serial Monitor
+ Serial.println("System Initialized.");
+ Serial.println("Slot Status: Empty");
+ Serial.println("Gate Status: Closed");
+ digitalWrite(redLED, HIGH); // Indicate gate closed
+ digitalWrite(greenLED, LOW);
+ }
+ void loop() {
+ // Read sensor states
+ int entrySensorState = digitalRead(irEntrySensor);
+ int slotSensorState = digitalRead(irSlotSensor);
+ // Check the status of the parking slot
+ isSlotOccupied = (slotSensorState == LOW);
+ // Print car detection status
+ if (entrySensorState == LOW) {
+ Serial.println("Car Detected at Entry!");
+ }
+ if (!isSlotOccupied && entrySensorState == LOW) {
+ Serial.println("Car Entering Parking Slot...");
+ openGate(); // Open the gate if the slot is vacant
+ delay(5000); // Simulate the car entering
+ closeGate(); // Close the gate after the car enters
+ } else if (isSlotOccupied) {
+ Serial.println("Slot Status: Occupied");
+ Serial.println("Gate Status: Closed");
+ } else {
+ Serial.println("Slot Status: Empty");
+ Serial.println("Gate Status: Closed");
+ 4
+5
+ }
+ delay(1000); // Delay for readability
+ }
+ // Function to open the gate
+ void openGate() {
+ entryServo.write(0);
+ digitalWrite(greenLED, HIGH);
+ digitalWrite(redLED, LOW);
+ Serial.println("Gate Opened");
+ }
+ // Function to close the gate
+ void closeGate() {
+ entryServo.write(180);
+ digitalWrite(greenLED, LOW);
+ digitalWrite(redLED, HIGH);
+ Serial.println("Gate Closed");
+ }
+
+
+//////////////////////////////////////##GPS
+#include <TinyGPS++.h>
+ #include <SoftwareSerial.h>
+ /* Create object named bt of the class SoftwareSerial */
+ SoftwareSerial GPS_SoftSerial(4, 3);/* (Rx, Tx) */
+ /* Create an object named gps of the class TinyGPSPlus */
+ TinyGPSPlus gps;
+ volatile float minutes, seconds;
+ volatile int degree, secs, mins;
+ void setup() {
+ Serial.begin(9600); /* Define baud rate for serial communication */
+ GPS_SoftSerial.begin(9600); /* Define baud rate for software serial
+ communication */
+ }
+ void loop() {
+ smartDelay(1000); /* Generate precise delay of 1ms */
+ unsigned long start;
+ double lat_val, lng_val, alt_m_val;
+ uint8_t hr_val, min_val, sec_val;
+ bool loc_valid, alt_valid, time_valid;
+ lat_val = gps.location.lat(); /* Get latitude data */
+ 3
+4
+ loc_valid = gps.location.isValid(); /* Check if valid location
+ data is available */
+ lng_val = gps.location.lng(); /* Get longtitude data */
+ alt_m_val = gps.altitude.meters(); /* Get altitude data in
+ meters */
+ alt_valid = gps.altitude.isValid(); /* Check if valid altitude
+ data is available */
+ hr_val = gps.time.hour(); /* Get hour */
+ min_val = gps.time.minute(); /* Get minutes */
+ sec_val = gps.time.second(); /* Get seconds */
+ time_valid = gps.time.isValid(); /* Check if valid time data
+ is available */
+ if (!loc_valid)
+ {
+ Serial.print("Latitude : ");
+ Serial.println("*****");
+ Serial.print("Longitude : ");
+ Serial.println("*****");
+ }
+ else
+ {
+ DegMinSec(lat_val);
+ Serial.print("Latitude in Decimal Degrees : ");
+ Serial.println(lat_val, 6);
+ Serial.print("Latitude in Degrees Minutes Seconds : ");
+ Serial.print(degree);
+ Serial.print("\t");
+ Serial.print(mins);
+ Serial.print("\t");
+ Serial.println(secs);
+ DegMinSec(lng_val); /* Convert the decimal degree value into
+ degrees minutes seconds form */
+ Serial.print("Longitude in Decimal Degrees : ");
+ Serial.println(lng_val, 6);
+ Serial.print("Longitude in Degrees Minutes Seconds : ");
+ Serial.print(degree);
+ Serial.print("\t");
+ Serial.print(mins);
+ Serial.print("\t");
+ Serial.println(secs);
+ }
+ if (!alt_valid)
+ {
+ Serial.print("Altitude : ");
+ Serial.println("*****");
+ }
+ else
+ {
+ 4
+5
+ Serial.print("Altitude : ");
+ Serial.println(alt_m_val, 6);
+ }
+ if (!time_valid)
+ {
+ Serial.print("Time : ");
+ Serial.println("*****");
+ }
+ else
+ {
+ char time_string[32];
+ sprintf(time_string, "Time : %02d/%02d/%02d \n", hr_val,
+ min_val, sec_val);
+ Serial.print(time_string);
+ }
+ }
+ static void smartDelay(unsigned long ms)
+ {
+ unsigned long start = millis();
+ do
+ {
+ while (GPS_SoftSerial.available()) /* Encode data read from GPS
+ while data is available on serial port */
+ gps.encode(GPS_SoftSerial.read());
+ /* Encode basically is used to parse the string received by the GPS and
+ to store it in a buffer so that information can be extracted from it */
+ } while (millis()- start < ms);
+ }
+ void DegMinSec( double tot_val)
+ into degrees minutes seconds form */
+ {
+ degree = (int)tot_val;
+ minutes = tot_val- degree;
+ seconds = 60 * minutes;
+ minutes = (int)seconds;
+ mins = (int)minutes;
+ seconds = seconds- minutes;
+ seconds = 60 * seconds;
+ secs = (int)seconds;
+ }
+
+
+////////////////////////////////////////////motion sensor
+ #define BLYNK_TEMPLATE_ID "TMPL6Zu-0oBiD"
+ #define BLYNK_TEMPLATE_NAME "iot motion detection"
+ #define BLYNK_AUTH_TOKEN "wnAoDCRF4wGjJXwnLEXVdqrIO2hf7CwX"
+ #define BLYNK_PRINT Serial
+ #include <WiFi.h>
+ #include <BlynkSimpleEsp32.h>
+ char auth[] = BLYNK_AUTH_TOKEN;
+ char ssid[] = "Rupu's dimension";
+ 3
+4
+ char pass[] = "zaqwsxcde";
+ #define PIR_SENSOR 13
+ BlynkTimer timer;
+ void notifyOnTheft() {
+ int isTheftAlert = digitalRead(PIR_SENSOR);
+ Serial.println("PIR Sensor Value: " + String(isTheftAlert));
+ if (isTheftAlert == 1) {
+ Serial.println("Theft Alert in Home");
+ Blynk.logEvent("theft_alert", "Theft Alert in Home");
+ }
+ }
+ void setup() {
+ pinMode(PIR_SENSOR, INPUT);
+ Serial.begin(115200);
+ Serial.println("Connecting to Wi-Fi...");
+ Blynk.begin(auth, ssid, pass);
+ if (WiFi.status() == WL_CONNECTED) {
+ Serial.println("Wi-Fi Connected.");
+ Blynk.logEvent("test_event", "Blynk Test Event");
+ } else {
+ Serial.println("Wi-Fi Connection Failed.");
+ }
+ timer.setInterval(5000L, notifyOnTheft);
+ }
+ void loop() {
+ Blynk.run();
+ timer.run();
+ }
+ 
