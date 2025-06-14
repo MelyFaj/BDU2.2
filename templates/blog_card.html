@@ -1,0 +1,21 @@
+{% load static %}
+<div class="col-lg-6">
+    <div class="blog-post">
+      <div class="blog-thumb">
+        <img src="{{blog.banner.url}}" alt="">
+      </div>
+      <div class="down-content">
+        <span>{{blog.category.title}}</span>
+        <a href="{% url 'blog_details' blog.slug %}"><h4>{{blog.title}}</h4></a>
+        <ul class="post-info">
+          <li><a href="a">{{blog.user.username}}</a></li>
+          <li><a href="a">{{blog.created_date}}</a></li>
+          <li><a href="a">{{blog.blog_comments.all.count}} Comments</a></li>
+        </ul>
+        {% comment %} <div class="post-options">
+          <div class="row">
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+  </div>

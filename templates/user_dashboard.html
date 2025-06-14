@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Blog dashboard
+{% endblock %}
+
+{% block content %}
+  <section class="dashboard">
+    <div class="container-fluid">
+      <div class="text-center">
+        <h1 style="color: #C62266;">Welcome, {{ request.user.username }}!</h1>
+        <h2>Blogs Review</h2>
+      </div>
+      <div class="row py-5">
+        <!-- Profile Section -->
+        <div class="col-md-4">
+          <div class="text-center">
+            <img class="rounded rounded-circle profile-picture" src="{{ request.user.get_profile_picture }}" alt="Profile Picture" />
+            <ul class="text-center py-3">
+              <li class="py-2">
+                <span>Posts: <strong>{{ request.user.user_blogs.count }}</strong></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Blogs Section -->
+        <div class="col-md-8">
+          {% for entry in blogs_with_comments %}
+            <div class="blog-data">
+              <div style="border: 1px solid #ddd; margin-bottom: 20px; padding: 10px;">
+                <h5>{{ entry.blog.title }}</h5>
+                <p>{{ entry.blog.content }}</p>
+                <p>
+                  <strong>Published on:</strong> {{ entry.blog.created_date }}
+                </p>
+
+                <h6 style="color: #C62266;">Comments:</h6>
+                <ul>
+                  {% for comment_data in entry.comments %}
+                    <li>
+                      <strong>{{ comment_data.comment.user.username }}:</strong>
+                      {{ comment_data.comment.text }}
+                      <em>(on {{ comment_data.comment.created_date }})</em>
+                      <br />
+                      <p class="sentiment">
+                        <strong>Sentiment:</strong>
+                        <span class="{% if comment_data.sentiment == 'POSITIVE' %}
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                    text-success
+
+
+
+
+
+
+
+                          {% elif comment_data.sentiment == 'NEGATIVE' %}
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                    text-danger
+
+
+
+
+
+
+
+                          {% else %}
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                    text-secondary
+
+
+
+
+
+
+
+                          {% endif %}">
+                          {{ comment_data.sentiment }}
+                        </span>
+                      </p>
+                    </li>
+                  {% empty %}
+                    <li>No comments yet.</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% empty %}
+            <p>You have not created any blogs yet.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
